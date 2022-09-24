@@ -1,0 +1,19 @@
+body{
+    margin: 0px;
+}
+
+#container{
+    padding: 5px;
+    display: flex;
+}
+
+#esquerda{
+    width: 30%;
+    background-color: red;
+
+}
+
+#direita{
+    width: 70%;
+    background-color: blue;
+}

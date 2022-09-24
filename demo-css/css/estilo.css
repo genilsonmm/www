@@ -1,0 +1,22 @@
+h1{
+    font-family: Arial, Helvetica, sans-serif;  
+    color: brown;
+  }    
+  
+#estilo_geral{
+    background-color: #C9C1C1;
+}
+
+#titulo{
+    color: rgb(200, 30, 169);
+}
+
+.btn_blue{
+    background-color: #030F43;
+    color: white;
+}
+
+.btn_red{
+    background-color: red;
+    color: white;
+}
