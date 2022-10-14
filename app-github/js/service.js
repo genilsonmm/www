@@ -31,7 +31,8 @@ function getData(userName){
        const error =  msg.responseJSON.message
 
        if(error === "Not Found"){
-            //Modal
+            $("#mymodal").modal("show")
+            $("#modal-message").html("Usuário inválido!")
             showPage1()
        }
 
@@ -110,6 +111,8 @@ $("button").click(function(){
         $("input").val("")
     } else {
         //Modal
+        $("#mymodal").modal("show")
+        $("#modal-message").html("Digite um usuário válido!")
     }
 })
 
