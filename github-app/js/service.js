@@ -1,38 +1,43 @@
 const urlBase = 'https://api.github.com/users'
 
-$(document).ready(()=> {
+$(document).ready(() => {
+
+    $('#details').fadeOut()
 
     $.ajax({
         url: urlBase,
         type: 'GET'
     })
-    .done((response)=>{
-        //console.log(response)
-        const users = formatUsers(response)
-        showUsers(users)
-    })  
+        .done((response) => {
+            //console.log(response)
+            const users = formatUsers(response)
+            showUsers(users)
+        })
 })
 
-function showUsers(users){
-    for(user of users){
-        const row = '<tr>'+
-                        '<td>' + user.id  + '</td>' +
-                        '<td>' + + '</td>' +
+function showUsers(users) {
+    for (user of users) {
+        const img = `<img src='${user.photo}' width=60 alt='photo'/>`
+        const link = `<a href='${user.link}' target='_blank'>Ver</a>`
+        const row = '<tr>' +
+                        '<td>' + user.id + '</td>' +
+                        '<td>' + img + '</td>' +
                         '<td>' + user.login + '</td>' +
-                        '<td>Ver</td>' +
+                        '<td>' + link + '</td>' +
                     '</tr>'
         $('#user-data').append(row)
     }
 }
 
-function formatUsers(data){
+function formatUsers(data) {
     const users = []
 
-    for(user of data){
+    for (user of data) {
         const newUser = {
             id: user.id,
             login: user.login,
-            photo: user.avatar_url
+            photo: user.avatar_url,
+            link: user.html_url
         }
 
         users.push(newUser)
@@ -40,3 +45,16 @@ function formatUsers(data){
 
     return users
 }
+
+$('#search').click(()=>{
+    $('#home').fadeOut()
+    $('#details').fadeIn(200)
+
+    const login = $('#inputLogin').val()
+    alert(login)
+})
+
+$('#init').click(()=>{
+    $('#home').fadeIn()
+    $('#details').fadeOut(200)
+})
