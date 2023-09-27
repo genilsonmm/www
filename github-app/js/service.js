@@ -8,11 +8,11 @@ $(document).ready(() => {
         url: urlBase,
         type: 'GET'
     })
-        .done((response) => {
-            //console.log(response)
-            const users = formatUsers(response)
-            showUsers(users)
-        })
+    .done((response) => {
+        //console.log(response)
+        const users = formatUsers(response)
+        showUsers(users)
+    })
 })
 
 function showUsers(users) {
@@ -51,7 +51,10 @@ $('#search').click(()=>{
     $('#details').fadeIn(200)
 
     const login = $('#inputLogin').val()
-    alert(login)
+    console.log(login)
+    if(login == ''){
+        $("#modal").modal('show')
+    }
 })
 
 $('#init').click(()=>{
