@@ -1,19 +1,45 @@
 const urlBase = 'https://api.github.com/users'
 
 $(document).ready(() => {
+    getData()
+})
+
+function getData(username){
+    
+    let url = urlBase
+
+    if(username){
+        //'https://api.github.com/users/username'
+        url += `/${username}`
+    }
 
     $('#details').fadeOut()
 
     $.ajax({
-        url: urlBase,
+        url: url,
         type: 'GET'
     })
     .done((response) => {
-        //console.log(response)
-        const users = formatUsers(response)
-        showUsers(users)
+        console.log(response)
+        if(username){
+            $('#home').fadeOut()
+            $('#details').fadeIn(200)
+            showUser(response)
+        } else {
+            $('#home').fadeIn()
+            $('#details').fadeOut()
+            const users = formatUsers(response)
+            showUsers(users)
+        }
     })
-})
+    .fail((error)=>{
+        console.log(error)
+        if(error.status == 403){
+            $("#modal").modal('show')
+            $("#message").html('Usuário inválido!')
+        }
+    })
+}
 
 function showUsers(users) {
     for (user of users) {
@@ -27,6 +53,16 @@ function showUsers(users) {
                     '</tr>'
         $('#user-data').append(row)
     }
+}
+
+function showUser(user){
+    const login = `<h5 class='card-title'>${user.login}</h5>`
+    const link = `<a href='${user.html_url}' target='_blank' class="btn btn-primary">Ver</a>`          
+    const img = `<img src="${user.avatar_url}" class="card-img-top" alt="photo">`
+
+    $("#img").html(img)
+    $(".card-body").append(login)
+    $(".card-body").append(link)
 }
 
 function formatUsers(data) {
@@ -47,13 +83,14 @@ function formatUsers(data) {
 }
 
 $('#search').click(()=>{
-    $('#home').fadeOut()
-    $('#details').fadeIn(200)
+    const username = $('#inputLogin').val()
 
-    const login = $('#inputLogin').val()
-    console.log(login)
-    if(login == ''){
+    if(username == ''){
         $("#modal").modal('show')
+        $("#message").html('Digite o login do usuário github!')
+    } else {
+        $('#inputLogin').val('') 
+        getData(username)
     }
 })
 
