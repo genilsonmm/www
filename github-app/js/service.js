@@ -16,11 +16,13 @@ function getData(username){
     $('#details').fadeOut()
 
     $.ajax({
-        url: url,
+        url: 'http://localhost:8081/api/aluno',
         type: 'GET'
     })
     .done((response) => {
         console.log(response)
+
+        /*
         if(username){
             $('#home').fadeOut()
             $('#details').fadeIn(200)
@@ -30,7 +32,7 @@ function getData(username){
             $('#details').fadeOut()
             const users = formatUsers(response)
             showUsers(users)
-        }
+        }*/
     })
     .fail((error)=>{
         console.log(error)
