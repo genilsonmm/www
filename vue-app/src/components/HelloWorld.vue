@@ -38,6 +38,7 @@
     </h1>
 
     <hr>
+    <button @click="sendEvent">Enviar evento</button>
   </div>
 </template>
 

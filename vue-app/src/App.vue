@@ -1,6 +1,10 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
+  <hr>
+
   <HelloWorld :msg="textoDoOutroComponente"/>
+  <hr>
+
   {{ msg }} | {{ count }}
   <button  @click="mudarTexto">Mudar</button>
 
@@ -43,7 +47,7 @@ export default {
     }
   },
   components: {
-    HelloWorld
+    HelloWorld,
   },
   mounted(){
     this.msg = 'Mudei a msg'
