@@ -15,11 +15,15 @@ h1{
     padding: 5px 10px 5px 10px;
 }
 
-
-.sucesso:hover {
+:where(.sucesso, .cancelar):hover{
     opacity: .7;
 }
 
+/*
+.sucesso:hover, .cancelar:hover {
+    opacity: .7;
+}
+*/
 .cancelar{
     background-color: #ff0000;;
     color: #fff;
