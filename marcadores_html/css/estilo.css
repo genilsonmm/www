@@ -1,0 +1,30 @@
+h1{
+    font-size: 12px;
+}
+
+.tag_meio{
+    color: red;
+}
+
+.sucesso{
+    background-color: #157347;
+    color: #fff;
+    border-radius: 3px;
+    border: 0px;
+    font-size: 9px;
+    padding: 5px 10px 5px 10px;
+}
+
+
+.sucesso:hover {
+    opacity: .7;
+}
+
+.cancelar{
+    background-color: #ff0000;;
+    color: #fff;
+    border-radius: 3px;
+    border: 0px;
+    font-size: 9px;
+    padding: 5px 10px 5px 10px;
+}
