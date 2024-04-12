@@ -1,0 +1,15 @@
+.menu{
+    width: 30%;
+    float: left;
+    background-color: blue;
+}
+
+.conteudo{
+    width: 70%;
+    float: left;
+    background-color: brown;
+}
+
+.rodape{
+    background-color: chocolate;
+}
