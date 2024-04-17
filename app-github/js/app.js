@@ -1,37 +1,57 @@
-$(document).ready(()=> iniciar())
+$(document).ready(()=> init())
 
 const urlBase = "https://api.github.com/users"
 
-function iniciar(login){
+function init(login){
     let url = login ? `${urlBase}/${login}` : urlBase
 
     $.ajax({
         url: url,
         type: 'GET'
     })
-    .done((dados)=>{ 
+    .done((data)=>{ 
         if(login){
-            showUser(dados)
+            $("#page2").show()
+            $("#page1").hide()
+            showUser(data)
         } else {
-            const usuarios = prepararDados(dados)
-            exibirUsers(usuarios)
+            $("#page1").show()
+            $("#page2").hide()
+            const users = prepararDados(data)
+            showUsers(users)
+        }
+    })
+    .fail((error)=>{
+        const errorMsg = error.responseJSON.message
+        if(errorMsg === 'Not Found'){
+            showModal('Usuário inválido')
+        } else {
+            showModal('Falha ao obter dados do usuário')
         }
     })
 }
 
-function prepararDados(dados){
-    let usuarios = []
-    for(let i=0; i< dados.length; i++){
-        const novoUsuario = formatUser(dados[i])
-        usuarios.push(novoUsuario)
+function prepararDados(data){
+    let users = []
+    for(let i=0; i< data.length; i++){
+        const newUser = formatUser(data[i])
+        users.push(newUser)
     }
 
-    return usuarios
+    return users
 }
 
 function showUser(user) {
     const userData = formatUser(user)
-    console.log(userData)
+    const img = `<img src="${userData.photo}" class="card-img-top" alt="photo">`
+    const link = `<a href="${userData.link}" class="btn btn-primary" target="_blank">Acessar</a>`
+    const cardContent = 
+            `<div class="card-body">
+                ${img}
+                <h5 class="card-title"></h5>
+                ${link}               
+            </div>`
+    $(".card").html(cardContent)
 }
 
 function formatUser(user){
@@ -43,11 +63,9 @@ function formatUser(user){
     }
 }
 
-function exibirUsers(users){
+function showUsers(users){
     for(let i=0; i< users.length; i++){
-        
         const row = createRow(users[i])
-
         $("#user_data").append(row)
     }
 }
@@ -64,14 +82,24 @@ function createRow(user){
             </tr>`
 }
 
+function showModal(message){
+    $("#notice-modal").modal("show")
+    $(".modal-body").html(`<h4>${message}</h4>`)
+}
+
 $('button').click(() => {
     const input = $('input')
     const login = input.val()
     
     if(login) {
-        iniciar(login)
+        init(login)
         input.val('')
     } else {
-        alert('Digite o login')
+        showModal("Digite o login")
     }
+})
+
+$("#previous").click(()=>{
+    $("#page1").show()
+    $("#page2").hide()
 })
