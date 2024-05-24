@@ -7,17 +7,36 @@
 
 
     <h1 v-for="(item, index) in nomes" :key="index">
-        {{ index }} | {{ item }}
+        {{ index+1 }} | {{ item }}
     </h1>
 
+
+    <input type="text" v-model="nome" />
+
+    <h1 class="nome">{{ nome }}</h1>
+
+    <div v-if="isTrue">
+        É verdadeiro
+    </div>
+    <h2 v-else>
+        É falso
+    </h2>
+
+
+    <div v-show="isTrue">
+        Sou visível
+    </div>
 </template>
 
 <script setup>
 import { ref } from 'vue';
 import ExibidorDeValores from '@/components/ExibidorDeValores.vue'
 
-let count = ref(0)
+const isTrue = ref(true)
+isTrue.value = false
 
+let count = ref(0)
+let nome = ref('Genilson')
 const nomes = ref(["Maria", "João", "Daniel"])
 
 function incrementar(){
@@ -29,3 +48,9 @@ function decrementar(){
 }
 
 </script>
+
+<style>
+.nome{
+    color: blue;
+}
+</style>

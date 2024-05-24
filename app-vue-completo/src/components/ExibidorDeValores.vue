@@ -3,7 +3,7 @@
     <div>
         {{ valor }}
     </div>
-    <button @click="emit('emitFilho')">Decrementar</button>
+    <button class="btn btn-primary" @click="emit('emitFilho')">Decrementar</button>
 </template>
 
 <script setup>
