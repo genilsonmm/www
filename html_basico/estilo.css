@@ -1,0 +1,21 @@
+html{
+    background-color: #f5f5f5;
+}
+
+h1{
+    color: #978f8f;
+}
+
+button{
+    background-color: rgb(16, 16, 62);
+    color: #fff;
+}
+
+#titulo_noticia{
+    color: brown;
+    font-size: 12px;
+}
+
+.t_noticia{
+    font-family:Verdana, Geneva, Tahoma, sans-serif
+}

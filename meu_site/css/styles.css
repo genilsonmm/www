@@ -1,0 +1,13 @@
+.container{
+    display: flex;
+    flex-direction:row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.container div{
+    background-color: black;
+    border: 1px solid #f8f8;
+    color: #fff;
+    width: 100px;
+}
