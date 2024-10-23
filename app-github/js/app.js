@@ -1,4 +1,4 @@
-const url = "https://api.github.com/users"
+const url = "http://localhost:3000/api/v1/books"
 
 $(document).ready(()=> {
     iniciar()
@@ -12,8 +12,8 @@ function iniciar() {
     })
     .done((response)=>{
         console.log(response)
-        const usuarios = obterUsuarios(response)
-        exibirUsuarios(usuarios)
+        //const usuarios = obterUsuarios(response)
+        //exibirUsuarios(usuarios)
     })
 
 }
