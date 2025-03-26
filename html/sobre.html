@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre</title>
+    <style>
+        .esquerda {
+            color: wheat;
+            height: 100px;
+            background-color: black;
+            width: 30%;
+        }
+
+        .direita {
+            color: wheat;
+            height: 100px;
+            background-color: red;
+            width: 70%;
+        }
+
+        .main {
+            display: flex;
+        }
+
+        @media (width < 500px) {
+            .main {
+                display: block;
+            }
+            h1 {
+                font-size: 10px;
+            }
+            .esquerda {
+                width: 100%;
+            }
+
+            .direita {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Página sobre</h1>
+
+    <div class="main">
+        <div class="esquerda">
+            Conteúdo da Esquerda
+        </div>
+        <div class="direita">
+            Conteúdo da Direita
+        </div>
+    </div>
+
+    <a href="index.html">
+        Ir para o início
+    </a>
+</body>
+
+</html>
