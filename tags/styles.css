@@ -1,0 +1,13 @@
+ h1 {
+     color: red;
+ }
+
+ #meu-h1 {
+     color: blue;
+ }
+
+ .minha-classe {
+     border: 1px solid #000;
+     width: 45%;
+     float: left;
+ }

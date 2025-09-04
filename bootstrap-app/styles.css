@@ -1,0 +1,21 @@
+body{
+    padding: 10px;
+}
+
+.btn-my-button {
+    background-color: #6628E0;
+    color: #fff;
+    border: 0px;
+    padding: 5px 10px 5px 10px;
+    font-size: 12px;
+    border-radius: 5px;
+}
+
+.btn-my-button:hover {
+    background-color: #4B1DB8;
+    cursor: pointer;
+}
+
+.margin-top-6 {
+    margin-top: 6px;
+}
